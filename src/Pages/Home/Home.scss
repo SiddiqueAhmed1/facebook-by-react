@@ -1,0 +1,107 @@
+.fb-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  background-color: var(--background-color);
+
+  .fb-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 975px;
+    margin: auto;
+
+    .fb-left {
+        margin-bottom: 130px;
+      img {
+        width: 310px;
+        transform: translate(-29px, 17px);
+      }
+      h2 {
+        width: 500px;
+        font-size: 32px;
+        font-weight: normal;
+      }
+    }
+    .fb-right {
+      .fb-box {
+        box-shadow: var(--fb-box-shadow);
+        background-color: white;
+        padding: 20px;
+        text-align: center;
+        width: 400px;
+        border-radius: 10px;
+
+        form {
+          display: flex;
+          text-align: center;
+          flex-direction: column;
+          gap: 15px;
+
+          input {
+            padding: 16px 14px;
+            font-size: 17px;
+            box-shadow: none;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+
+            &:focus {
+              outline-color: var(--primary-color);
+              outline-style: auto;
+              outline-width: 1px;
+            }
+          }
+          button {
+            padding: 11px 12px;
+            font-size: 17px;
+            box-shadow: none;
+            border: 1px solid #d1d1d1;
+            border-radius: 6px;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+          }
+        }
+        a {
+          margin: 10px 0px;
+          display: inline-block;
+          color: var(--primary-color);
+          font-weight: 500;
+          font-size: 17px;
+        }
+        .divider {
+          border-top: 1px solid #d1d1d1;
+          margin: 12px 0px;
+          margin-bottom: 25px;
+        }
+        button {
+          padding: 14px 18px;
+          font-size: 17px;
+          border: 1px solid #d1d1d1;
+          border-radius: 6px;
+          background-color: var(--secondary-color);
+          color: white;
+          font-weight: 600;
+          font-size: 17px;
+          cursor: pointer;
+        }
+      }
+      span {
+        margin-top: 25px;
+        margin-left: 40px;
+        display: inline-block;
+        font-size: 13px;
+
+        a {
+          display: inline-block;
+          font-weight: 700;
+          color: black;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

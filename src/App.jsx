@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.scss'
+import { RouterProvider } from 'react-router-dom'
+import router from './Router/Route'
 
 function App() {
  
 
   return (
     <>
-    <h1>App page</h1>
+    <RouterProvider router={router} />
     </>
   )
 }
