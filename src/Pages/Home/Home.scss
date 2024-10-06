@@ -7,28 +7,29 @@
 
   .fb-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 975px;
     margin: auto;
+    margin-top: 120px;
 
     .fb-left {
-        margin-bottom: 130px;
+       margin-top: 50px;
       img {
         width: 310px;
         transform: translate(-29px, 17px);
       }
       h2 {
         width: 500px;
-        font-size: 32px;
-        font-weight: normal;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 32px;
       }
     }
     .fb-right {
       .fb-box {
         box-shadow: var(--fb-box-shadow);
         background-color: white;
-        padding: 20px;
+        padding: 15px;
         text-align: center;
         width: 400px;
         border-radius: 10px;
@@ -40,11 +41,12 @@
           gap: 15px;
 
           input {
-            padding: 16px 14px;
-            font-size: 17px;
+            padding: 14px 14px;
+            font-size: 15px;
             box-shadow: none;
             border: 1px solid #e0e0e0;
             border-radius: 6px;
+            color: #fff7f7;
 
             &:focus {
               outline-color: var(--primary-color);
@@ -70,7 +72,7 @@
           display: inline-block;
           color: var(--primary-color);
           font-weight: 500;
-          font-size: 17px;
+          font-size: 12px;
         }
         .divider {
           border-top: 1px solid #d1d1d1;
@@ -78,7 +80,7 @@
           margin-bottom: 25px;
         }
         button {
-          padding: 14px 18px;
+          padding: 12px 16px;
           font-size: 17px;
           border: 1px solid #d1d1d1;
           border-radius: 6px;
