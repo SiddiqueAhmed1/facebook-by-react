@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import Helmets from "../../Helper/Helper";
 import './Home.scss'
+import { useState } from "react";
 import Modal from "../../Components/Modal";
 const Home = () => {
+  const [modal, setModal] = useState(false)
   return (
     <>
       <Helmets title={'Facebook - Log in or sign up'}/>
-      <Modal/>
+      {modal && <Modal hide={setModal}></Modal> }
       <div className="fb-wrapper">
         <div className="fb-container">
           <div className="fb-left">
@@ -24,7 +26,7 @@ const Home = () => {
 
             <Link href="#">Forgotten password</Link>
               <div className="divider"></div>
-              <button>Create new account</button>
+              <button onClick={() => setModal(true)}>Create new account</button>
            </div>
          <span><Link href='#'>Create a Page </Link> for a celebrity, brand or business.</span>
           </div>
