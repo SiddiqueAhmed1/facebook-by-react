@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Helmets from "../../Helper/Helper";
 import './Home.scss'
+import Modal from "../../Components/Modal";
 const Home = () => {
   return (
     <>
       <Helmets title={'Facebook - Log in or sign up'}/>
+      <Modal/>
       <div className="fb-wrapper">
         <div className="fb-container">
           <div className="fb-left">
