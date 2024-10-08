@@ -7,27 +7,65 @@
   position: fixed;
   z-index: 999;
   background-image: linear-gradient(
-    rgba(23, 207, 47, 0.6),
-    rgba(180, 0, 0, 0.7)
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
   );
 
   .modal-container {
     background: white;
     box-shadow: var(--fb-box-shadow);
     width: 435px;
+    border-radius: 10px;
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       padding: 15px;
 
-      .modal-content{
-
+      .modal-content {
+        h2 {
+          font-weight: 600;
+        }
+        p {
+          font-weight: 300;
+          font-size: 15px;
+        }
       }
-      i{
+      i {
         cursor: pointer;
         height: 100%;
         font-size: 20px;
+      }
+    }
+
+    .modal-body {
+      border-top: 1px solid #ededed;
+
+      .login-form {
+        .name-input {
+          display: flex;
+          gap: 10px;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          padding: 15px;
+          gap: 10px;
+
+          input {
+            padding: 11px;
+            border-radius: 7px;
+            width: 100%;
+            border: 1px solid #ccd0d5;
+            font-size: 14px;
+            background-color: #f5f6f7;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
       }
     }
   }

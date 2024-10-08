@@ -12,14 +12,19 @@ const Modal = ({ hide }) => {
               <h2>Create a new account</h2>
               <p>It's quick and easy.</p>
             </div>
-            <i><LiaTimesSolid name="close-icon" onClick={() => hide(false)}></LiaTimesSolid></i>
+            <i><LiaTimesSolid onClick={() => hide(false)}></LiaTimesSolid></i>
           </div>
           <div className="modal-body">
-            {/* <div className="login-form">
+            <div className="login-form">
               <form action="">
-                <input type="text" />
+                <div className="name-input">
+                <input type="text" placeholder="First Name"/>
+                <input type="text" placeholder="Surname"/>
+                </div>
+                <input type="text"  placeholder="Mobile number or email adress"/>
+                <input type="text"  placeholder="New Password"/>
               </form>
-            </div> */}
+            </div>
           </div>
           <div className="modal-footer"></div>
         </div>
