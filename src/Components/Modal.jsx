@@ -1,9 +1,14 @@
 import { LiaTimesSolid } from "react-icons/lia";
 import "./Modal.scss";
-import { useState } from "react";
 import { FaQuestionCircle } from "react-icons/fa";
+import { day, month } from "../faker/faker";
 
 const Modal = ({ hide }) => {
+  const years = Array.from(
+    { length: 125 },
+    (a, i) => new Date().getFullYear() - i
+  );
+
   return (
     <>
       <div className="modal-area">
@@ -37,15 +42,45 @@ const Modal = ({ hide }) => {
                     </i>
                   </div>
                   <div className="dmy">
-                  <select name="" id="">
-                    <option value="">Day</option>
-                  </select>
-                  <select name="" id="">
-                    <option value="">Month</option>
-                  </select>
-                  <select name="" id="">
-                    <option value="">Year</option>
-                  </select>
+                    <select name="" id="">
+                      {day.map((item, index) => (
+                        <option
+                          value={item}
+                          selected={
+                            new Date().getDate() === item ? true : false
+                          }
+                          key={index}
+                        >
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                    <select name="" id="">
+                      {month.map((item, index) => (
+                        <option
+                          value={item}
+                          selected={
+                            new Date().getMonth() === index ? true : false
+                          }
+                          key={index}
+                        >
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                    <select name="" id="">
+                      {years?.map((item, index) => (
+                        <option
+                          value={item}
+                          key={index}
+                          selected={
+                            new Date().getFullYear === item ? true : false
+                          }
+                        >
+                          {item}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </form>
