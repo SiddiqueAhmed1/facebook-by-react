@@ -4,9 +4,10 @@ import { FaQuestionCircle } from "react-icons/fa";
 import { day, month } from "../faker/faker";
 
 const Modal = ({ hide }) => {
+  const currentYear = new Date().getFullYear();
   const years = Array.from(
-    { length: 125 },
-    (a, i) => new Date().getFullYear() - i
+    { length: currentYear - 1900 + 1 },
+    (a, i) => currentYear - i
   );
 
   return (
@@ -33,7 +34,7 @@ const Modal = ({ hide }) => {
                   type="text"
                   placeholder="Mobile number or email adress"
                 />
-                <input type="text" placeholder="New Password" />
+                <input type="text" name="password" placeholder="New Password" />
                 <div className="reg-extra">
                   <div className="reg-extra-title">
                     <h6>Date of birth</h6>
@@ -81,6 +82,41 @@ const Modal = ({ hide }) => {
                         </option>
                       ))}
                     </select>
+                  </div>
+                  <div className="gender">
+                    <div className="gender-title">
+                      <h6>Gender</h6>
+                      <i>
+                        <FaQuestionCircle />
+                      </i>
+                    </div>
+                    <div className="gender-input">
+                      <label>
+                        <span>Male</span>
+                        <input name="gender" type="radio" />
+                      </label>
+                      <label>
+                        <span>Female</span>
+                        <input name="gender" type="radio" />
+                      </label>
+                      <label>
+                        <span>Custom</span>
+                        <input name="gender" type="radio" />
+                      </label>
+                    </div>
+                  </div>
+                  <div className="fb-footer">
+                    <p>
+                      People who use our service may have uploaded your contact
+                      information to Facebook. Learn more.
+                    </p>
+                    <br />
+                    <p>
+                      By clicking Sign Up, you agree to our Terms, Privacy
+                      Policy and Cookies Policy. You may receive SMS
+                      notifications from us and can opt out at any time.
+                    </p>
+                    <button>Sign up</button>
                   </div>
                 </div>
               </form>
