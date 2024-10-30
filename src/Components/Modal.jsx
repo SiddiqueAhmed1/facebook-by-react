@@ -2,6 +2,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import "./Modal.scss";
 import { FaQuestionCircle } from "react-icons/fa";
 import { day, month } from "../faker/faker";
+import { useState } from "react";
 
 const Modal = ({ hide }) => {
   const currentYear = new Date().getFullYear();
@@ -10,6 +11,60 @@ const Modal = ({ hide }) => {
     (a, i) => currentYear - i
   );
 
+  const [input, setInput] = useState({
+    first_name: "",
+    sur_name: "",
+    email: "",
+    password: "",
+    day : '',
+    month : '',
+    year : '',
+    gender : '',
+  });
+  
+  const [border, setBorder] = useState({
+    first_name: true,
+    sur_name: true,
+    email: true,
+    password: true,
+  });
+  
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  
+    // Reset border error when typing if there is content
+    if (value.trim() !== "") {
+      setBorder((prevState) => ({
+        ...prevState,
+        [name]: true,
+      }));
+    }
+  };
+  
+  const handleBlurInput = (e) => {
+    const { name, value } = e.target;
+    // Set border to red if the field is empty on blur
+    if (value.trim() === "") {
+      setBorder((prevState) => ({
+        ...prevState,
+        [name]: false, // false means red border
+      }));
+    }
+  };
+  
+  const handleFocusInput = (e) => {
+    const { name } = e.target;
+    // Set border to default on focus
+    setBorder((prevState) => ({
+      ...prevState,
+      [name]: true, // true means default border color
+    }));
+  };
+  
   return (
     <>
       <div className="modal-area">
@@ -25,16 +80,58 @@ const Modal = ({ hide }) => {
           </div>
           <div className="modal-body">
             <div className="login-form">
-              <form action="">
+              <form>
                 <div className="name-input">
-                  <input type="text" placeholder="First Name" />
-                  <input type="text" placeholder="Surname" />
+                  <input
+                    style={{
+                      borderColor: border.first_name ? "#ccd0d5" : "red", // Default color or red
+                    }}
+                    type="text"
+                    placeholder="First Name"
+                    name="first_name"
+                    value={input.first_name}
+                    onChange={handleInput}
+                    onBlur={handleBlurInput}
+                    onFocus={handleFocusInput}
+                  />
+                  <input
+                    style={{
+                      borderColor: border.sur_name ? "#ccd0d5" : "red", // Default color or red
+                    }}
+                    type="text"
+                    placeholder="Surname"
+                    name="sur_name"
+                    value={input.sur_name}
+                    onChange={handleInput}
+                    onBlur={handleBlurInput}
+                    onFocus={handleFocusInput}
+                  />
                 </div>
                 <input
+                  style={{
+                    borderColor: border.email ? "#ccd0d5" : "red", // Default color or red
+                  }}
                   type="text"
-                  placeholder="Mobile number or email adress"
+                  placeholder="Mobile number or email address"
+                  name="email"
+                  value={input.email}
+                  onChange={handleInput}
+                  onBlur={handleBlurInput}
+                  onFocus={handleFocusInput}
                 />
-                <input type="text" name="password" placeholder="New Password" />
+                <input
+                  style={{
+                    borderColor: border.password ? "#ccd0d5" : "red", // Default color or red
+                  }}
+                  type="text"
+                  placeholder="New Password"
+                  name="password"
+                  value={input.password}
+                  onChange={handleInput}
+                  onBlur={handleBlurInput}
+                  onFocus={handleFocusInput}
+                />
+             
                 <div className="reg-extra">
                   <div className="reg-extra-title">
                     <h6>Date of birth</h6>
@@ -43,7 +140,8 @@ const Modal = ({ hide }) => {
                     </i>
                   </div>
                   <div className="dmy">
-                    <select name="" id="">
+                    {/* DAY */}
+                    <select name="day" onChange={handleInput}>
                       {day.map((item, index) => (
                         <option
                           value={item}
@@ -56,7 +154,8 @@ const Modal = ({ hide }) => {
                         </option>
                       ))}
                     </select>
-                    <select name="" id="">
+                    {/* month */}
+                    <select name="month" onChange={handleInput}>
                       {month.map((item, index) => (
                         <option
                           value={item}
@@ -69,7 +168,12 @@ const Modal = ({ hide }) => {
                         </option>
                       ))}
                     </select>
-                    <select name="" id="">
+                    {/* year */}
+                    <select
+                      name="year"
+                      value={input.year}
+                      onChange={handleInput}
+                    >
                       {years?.map((item, index) => (
                         <option
                           value={item}
@@ -83,6 +187,7 @@ const Modal = ({ hide }) => {
                       ))}
                     </select>
                   </div>
+                  {/* gender sub section */}
                   <div className="gender">
                     <div className="gender-title">
                       <h6>Gender</h6>
@@ -93,15 +198,30 @@ const Modal = ({ hide }) => {
                     <div className="gender-input">
                       <label>
                         <span>Male</span>
-                        <input name="gender" type="radio" />
+                        <input
+                          name="gender"
+                          value="Male"
+                          type="radio"
+                          onChange={handleInput}
+                        />
                       </label>
                       <label>
                         <span>Female</span>
-                        <input name="gender" type="radio" />
+                        <input
+                          name="gender"
+                          value="Female"
+                          type="radio"
+                          onChange={handleInput}
+                        />
                       </label>
                       <label>
                         <span>Custom</span>
-                        <input name="gender" type="radio" />
+                        <input
+                          name="gender"
+                          value="Custom"
+                          type="radio"
+                          onChange={handleInput}
+                        />
                       </label>
                     </div>
                   </div>
@@ -110,7 +230,7 @@ const Modal = ({ hide }) => {
                       People who use our service may have uploaded your contact
                       information to Facebook. Learn more.
                     </p>
-                    <br />
+
                     <p>
                       By clicking Sign Up, you agree to our Terms, Privacy
                       Policy and Cookies Policy. You may receive SMS
